@@ -1,0 +1,16 @@
+{
+  "name": "trackeye",
+  "version": "1.0.0",
+  "description": "a simple app to track iot activity ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.0.1",
+    "express": "^4.17.1"
+  }
+}
