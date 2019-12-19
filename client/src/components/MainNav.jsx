@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import { Menu, Icon, Sidebar, Segment, Header, Image } from "semantic-ui-react";
+import { Menu, Icon, Sidebar, Segment} from "semantic-ui-react";
+import {BrowserRouter as Router ,Route,Switch} from 'react-router-dom';
 import RightNav from "./RightNav";
+import CreateTracker from "./CreateTracker";
+import EditTracker from "./EditTracker";
+import Map from "./Map";
 
 export default class MainNav extends Component {
   state = { visible: false };
@@ -23,6 +27,7 @@ export default class MainNav extends Component {
     };
     return (
       <div>
+        <Router>
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}
@@ -33,7 +38,7 @@ export default class MainNav extends Component {
             visible={visible}
             width="thin"
           >
-            <RightNav></RightNav>
+            <RightNav handleSidebarHide={this.handleSidebarHide}></RightNav>
           </Sidebar>
           <Sidebar.Pusher>
             <Menu size="massive" attached="top">
@@ -53,11 +58,22 @@ export default class MainNav extends Component {
               </Menu.Item>
             </Menu>
             <Segment basic width={Window.width}>
-              <Header as="h3">Application Content</Header>
-              <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+                
+                <Switch>
+                  <Route path="/create">
+                      <CreateTracker/>
+                  </Route>
+                <Route path="/edit">
+                  <EditTracker/>
+                </Route>
+                <Route path="/map">
+                  <Map/>
+                </Route>
+              </Switch>
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
+        </Router>
       </div>
     );
   }
