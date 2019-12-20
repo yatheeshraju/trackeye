@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Menu} from 'semantic-ui-react';
+import {Menu, Icon} from 'semantic-ui-react';
 import { Link} from 'react-router-dom';
 
 export default class RightNav extends Component {
@@ -7,17 +7,17 @@ export default class RightNav extends Component {
     
     render() {
 
-        var itemStyles={
-           
+        var iconStyle={
+           paddingRight: 30 ,
         };
 
         return (
             <div>
                 
-                <Menu.Item header style={itemStyles}> Options </Menu.Item>
-                <Menu.Item  > <Link to="/map" onClick={this.props.handleSidebarHide}> Map</Link></Menu.Item>
-                <Menu.Item > <Link to="/create" onClick={this.props.handleSidebarHide}>Create Tracker</Link></Menu.Item>
-                <Menu.Item > <Link to="/edit" onClick={this.props.handleSidebarHide}>Edit Tracker</Link></Menu.Item>
+                <Menu.Item header > Options </Menu.Item>
+                <Menu.Item  > <Link to="/map" onClick={this.props.handleSidebarHide}> <Icon name='map' style={iconStyle}></Icon>Map</Link></Menu.Item>
+                <Menu.Item > <Link to="/create" onClick={this.props.handleSidebarHide}><Icon name='crosshairs' style={iconStyle}></Icon>Create Tracker</Link></Menu.Item>
+                <Menu.Item > <Link to="/edit" onClick={this.props.handleSidebarHide}><Icon name='edit' style={iconStyle}></Icon>Edit Tracker</Link></Menu.Item>
                 
          </div>
             

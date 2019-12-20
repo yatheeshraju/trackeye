@@ -5,20 +5,25 @@ import RightNav from "./RightNav";
 import CreateTracker from "./CreateTracker";
 import EditTracker from "./EditTracker";
 import Map from "./Map";
+import LeftNav from "./LeftNav";
 
 export default class MainNav extends Component {
-  state = { visible: false };
+  state = { visible: false ,leftvisible:false};
 
   handleItemClick = e =>
     function() {
       this.setState({ activeItem: e.name });
     };
   handleSidebarHide = () => this.setState({ visible: false });
+  handleLeftSidebarHide = () => this.setState({ leftvisible: false });
   handleShowClick = () => this.setState({ visible: true });
+  handleLeftShowClick = () => this.setState({ leftvisible: true });
+
 
   render() {
     const { activeItem } = this.state;
     const { visible } = this.state;
+    const {leftvisible}=this.state;
     const logostyle = {
       textAlign: "center",
       paddingTop: "15px",
@@ -40,9 +45,22 @@ export default class MainNav extends Component {
           >
             <RightNav handleSidebarHide={this.handleSidebarHide}></RightNav>
           </Sidebar>
+          <Sidebar
+            as={Menu}
+            animation="push"
+            direction="left"
+            onHide={this.handleLeftSidebarHide}
+            vertical
+            visible={leftvisible}
+            width={window.width}
+          >
+            <LeftNav trackers={this.listOfTrackers}handleSidebarHide={this.handleLeftSidebarHide}></LeftNav>
+          </Sidebar>
           <Sidebar.Pusher>
             <Menu size="large" attached="top">
-              <Menu.Item position="left" name="trackers">
+              <Menu.Item position="left" name="trackers"
+              active={activeItem === "options"}
+              onClick={this.handleLeftShowClick}>
                 <Icon name="eye" />
               </Menu.Item>
 
@@ -57,7 +75,7 @@ export default class MainNav extends Component {
                 <Icon name="options" />
               </Menu.Item>
             </Menu>
-            <Segment basic width={Window.width}>
+            <Segment basic >
                 
                 <Switch>
                   <Route path="/create">
