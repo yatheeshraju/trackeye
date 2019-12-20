@@ -36,12 +36,12 @@ export default class MainNav extends Component {
             onHide={this.handleSidebarHide}
             vertical
             visible={visible}
-            width="thin"
+            width={window.width}
           >
             <RightNav handleSidebarHide={this.handleSidebarHide}></RightNav>
           </Sidebar>
           <Sidebar.Pusher>
-            <Menu size="massive" attached="top">
+            <Menu size="large" attached="top">
               <Menu.Item position="left" name="trackers">
                 <Icon name="eye" />
               </Menu.Item>
