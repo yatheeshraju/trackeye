@@ -6,6 +6,7 @@ import CreateTracker from "./CreateTracker";
 import EditTracker from "./EditTracker";
 import Map from "./Map";
 import LeftNav from "./LeftNav";
+import Home from "./Home";
 
 export default class MainNav extends Component {
   state = { visible: false ,leftvisible:false};
@@ -87,6 +88,9 @@ export default class MainNav extends Component {
                 <Route path="/map">
                   <Map/>
                 </Route>
+                <Route path="/">
+                      <Home/>
+                  </Route>
               </Switch>
             </Segment>
           </Sidebar.Pusher>

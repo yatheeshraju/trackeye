@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Image } from "semantic-ui-react";
 export default class Map extends Component {
+    state={
+        cords:''
+    }
     render() {
         return (
-            <div >
+            <div style={{minHeight:window.innerHeight}} >
                 Map Page
-              <Image src="https://via.placeholder.com/300x450" />
+                <p>{this.props.location}</p>
             </div>
         )
     }

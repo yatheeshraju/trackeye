@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import {Form,Button} from 'semantic-ui-react';
+import {Form,Button,Message} from 'semantic-ui-react';
 const axios = require('axios');
 
 export default class CreateTracker extends Component {
     state={
-        
+        success:false,
+        error:false
     }
 
     setUniqueName=(e)=>{
-        this.setState({uniqueName:e.target.value});
-        console.log(this.state);
+        this.setState({uniqueName:e.target.value})
     };
 
     createTracker=(e)=>{
@@ -20,8 +20,13 @@ export default class CreateTracker extends Component {
               uniqueName:this.state.uniqueName
             }
           })
-          .then(function (response) {
-           
+          .then((response)=> {
+             
+           if(response.data==='success'){
+               this.setState({success:true});
+           }else{
+               this.setState({error:true});
+           }
           })
           .catch(function (error) {
             console.log(error);
@@ -29,11 +34,13 @@ export default class CreateTracker extends Component {
     };
     render() {
         return (
-            <div>
+            <div style={{minHeight:window.innerHeight}}>
                 Create Tracker
-               <Form >
+               <Form success={this.state.success} error={this.state.error}>
+               <Message animation='fade' duration='500' success content='Successfully created tracker !' />
+               <Message animation='fade' duration='500'  error content='tracker name already taken ! try other name' />
                    <Form.Input label='uniqueName' onChange={this.setUniqueName} type='text'/>
-                   <Button type='button' fluid onClick={this.createTracker} disabled={!this.state.uniqueName}>Create</Button>
+                   <Button positive type='button' fluid onClick={this.createTracker} disabled={!this.state.uniqueName}>Create</Button>
                </Form>
 
             </div>
