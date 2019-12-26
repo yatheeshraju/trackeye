@@ -23,7 +23,7 @@ export default class LeftNav extends Component {
   })
 };
 
-  componentWillMount(){
+  componentDidMount(){
     this.getTrackers();
   }
 

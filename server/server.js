@@ -19,7 +19,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // An api endpoint that returns a short list of items
-app.get('/tracker/:token', (req,res) => {
+app.post('/tracker/:token', (req,res) => {
     res.send(req.params);
 });
 

@@ -3,7 +3,6 @@ import { Menu, Icon, Sidebar, Segment} from "semantic-ui-react";
 import {BrowserRouter as Router ,Route,Switch} from 'react-router-dom';
 import RightNav from "./RightNav";
 import CreateTracker from "./CreateTracker";
-import EditTracker from "./EditTracker";
 import Map from "./Map";
 import LeftNav from "./LeftNav";
 import Home from "./Home";
@@ -82,9 +81,6 @@ export default class MainNav extends Component {
                   <Route path="/create">
                       <CreateTracker/>
                   </Route>
-                <Route path="/edit">
-                  <EditTracker/>
-                </Route>
                 <Route path="/map">
                   <Map/>
                 </Route>

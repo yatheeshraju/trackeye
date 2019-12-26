@@ -5,7 +5,8 @@ const axios = require('axios');
 export default class CreateTracker extends Component {
     state={
         success:false,
-        error:false
+        error:false,
+        uniqueName:''
     }
 
     setUniqueName=(e)=>{
@@ -24,8 +25,15 @@ export default class CreateTracker extends Component {
              
            if(response.data==='success'){
                this.setState({success:true});
+               this.setState({uniqueName:''});
+               setInterval(() => {
+                this.setState({success:false});
+               }, 3000);
            }else{
                this.setState({error:true});
+               setInterval(() => {
+                this.setState({error:false});
+               }, 3000);
            }
           })
           .catch(function (error) {
