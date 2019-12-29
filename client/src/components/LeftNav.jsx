@@ -9,10 +9,10 @@ export default class LeftNav extends Component {
   getTrackers=()=>{ 
   axios.get('/trackers')
   .then((response)=> {
-    this.setState({data:response.data}) 
+    this.setState({data:response.data}); 
     this.trackers=this.state.data.map((element )=> 
       <Menu.Item key={element._id} >
-      <Link to={{pathname:"/map",cords:{cords:element.cords}}}  onClick={this.props.handleSidebarHide}>{element.name}</Link>
+      <Link to={`/map/${element._id}`}  onClick={this.props.handleSidebarHide}>{element.name}</Link>
     </Menu.Item>
     );
   

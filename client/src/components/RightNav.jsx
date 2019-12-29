@@ -17,6 +17,8 @@ export default class RightNav extends Component {
                 <Menu.Item header > Options </Menu.Item>
                 <Menu.Item  > <Link to="/map" onClick={this.props.handleSidebarHide}> <Icon name='map' style={iconStyle}></Icon>Map</Link></Menu.Item>
                 <Menu.Item > <Link to="/create" onClick={this.props.handleSidebarHide}><Icon name='crosshairs' style={iconStyle}></Icon>Create Tracker</Link></Menu.Item>
+                <Menu.Item > <Link to="/update" onClick={this.props.handleSidebarHide}><Icon name='edit' style={iconStyle}></Icon>Update Tracker</Link></Menu.Item>
+
           </div>
             
         )

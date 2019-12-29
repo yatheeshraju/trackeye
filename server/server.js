@@ -6,7 +6,7 @@ const port = process.env.PORT || 5000 ;
 var tracker = require('./models/tracker');
 
 // mongodb connection 
-if (mongoose.connect('mongodb://localhost/trackerdev', {useUnifiedTopology: true,useNewUrlParser:true})){
+if (mongoose.connect('mongodb://localhost/trackerdev', {useUnifiedTopology: true,useNewUrlParser:true,useFindAndModify:true})){
     console.log('Connected to database on localhost !');
 }else{
     console.log('Error connecting to database on localhost !');
@@ -19,8 +19,16 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // An api endpoint that returns a short list of items
-app.post('/tracker/:token', (req,res) => {
-    res.send(req.params);
+app.get('/tracker/:token', (req,res) => {
+    id=req.params.token;
+    tracker.find({_id:id}, function(err, trackers) {
+        if(err){
+            res.send('fail');
+           }else{
+            res.send(trackers);
+     }
+    })
+    
 });
 
 app.post('/create',jsonParser, (req,res) => {
@@ -39,10 +47,11 @@ app.post('/create',jsonParser, (req,res) => {
    
 });
 
-app.post('/edit',jsonParser, (req,res) => {
-    oldname=req.body.uniqueName;
-    tracker.findOneAndUpdate({ name:req.body.olduniqueName }, { name: req.body.uniqueName}, function(err, tracker) {
+app.post('/update',jsonParser, (req,res) => {
+    console.log(req.body);
+    tracker.findOneAndUpdate({ name:req.body.name }, { $set:{location: req.body.location}}, function(err,tracker) {
         if(err){
+            console.log(err);
             res.send('fail');
            }else{
             res.send('success');
@@ -52,7 +61,6 @@ app.post('/edit',jsonParser, (req,res) => {
  });
 
  app.get('/trackers',jsonParser, (req,res) => {
-        
     tracker.find({}, function(err, trackers) {
         if(err){
             res.send('fail');

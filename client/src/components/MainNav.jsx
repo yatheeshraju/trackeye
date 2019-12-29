@@ -3,9 +3,10 @@ import { Menu, Icon, Sidebar, Segment} from "semantic-ui-react";
 import {BrowserRouter as Router ,Route,Switch} from 'react-router-dom';
 import RightNav from "./RightNav";
 import CreateTracker from "./CreateTracker";
-import Map from "./Map";
+import TrackerMap from "./TrackerMap";
 import LeftNav from "./LeftNav";
 import Home from "./Home";
+import UpdateTracker from "./UpdateTracker";
 
 export default class MainNav extends Component {
   state = { visible: false ,leftvisible:false};
@@ -64,7 +65,7 @@ export default class MainNav extends Component {
                 <Icon name="eye" />
               </Menu.Item>
 
-              <div style={logostyle}> TrackEye</div>
+              <div style={logostyle}>  TrackEye</div>
 
               <Menu.Item
                 position="right"
@@ -81,13 +82,18 @@ export default class MainNav extends Component {
                   <Route path="/create">
                       <CreateTracker/>
                   </Route>
-                <Route path="/map">
-                  <Map/>
-                </Route>
+                <Route  exact  path="/map/:id" 
+                    render={({ match  }) => (
+                     <TrackerMap match={match} />
+                       )} />
+                <Route path="/update">
+                      <UpdateTracker/>
+                  </Route>
+             
                 <Route path="/">
                       <Home/>
                   </Route>
-              </Switch>
+                  </Switch> 
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
