@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {Form,Button,Message} from 'semantic-ui-react';
 const axios = require('axios');
 export default class UpdateTracker extends Component {

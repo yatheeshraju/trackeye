@@ -7,6 +7,7 @@ import TrackerMap from "./TrackerMap";
 import LeftNav from "./LeftNav";
 import Home from "./Home";
 import UpdateTracker from "./UpdateTracker";
+import SetGmapsKey from "./SetGmapsKey";
 
 export default class MainNav extends Component {
   state = { visible: false ,leftvisible:false};
@@ -88,6 +89,9 @@ export default class MainNav extends Component {
                        )} />
                 <Route path="/update">
                       <UpdateTracker/>
+                  </Route>
+                  <Route path="/setKey">
+                      <SetGmapsKey/>
                   </Route>
              
                 <Route path="/">

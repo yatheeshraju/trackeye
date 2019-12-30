@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 const axios = require('axios');
 
+
 export default class TrackerMap extends Component {
     state={
-        tracker:{}
+        tracker:{},
+        key:'',
+        mapimg:''
     }
     trackers=[{}];
     tracker={};
+
     getTrackerData=()=>{ 
         axios.get(`/tracker/${this.props.match.params.id}`)
         .then((response)=> {
@@ -14,23 +18,24 @@ export default class TrackerMap extends Component {
          this.tracker=this.trackers[0];
          
          this.setState({tracker:this.tracker});
+         this.setState({mapimg:`https://maps.googleapis.com/maps/api/staticmap?markers=${this.state.tracker.location}&zoom=15&size=${window.innerWidth}x${window.innerHeight}&maptype=roadmap
+         &key=${this.state.key}`});
         })
         .catch(function (error) {
       
           console.log(error);
         })
       };
-
       componentDidMount(){
-          this.getTrackerData();
+          this.setState({key:localStorage.getItem('gmapsKey')});
+          this.getTrackerData();    
+         
       }
 
-    render() {     
+    render() { 
         return (
-            <div style={{minHeight:window.innerHeight}} >
-                {this.state.tracker.name}<br/>
-                {this.state.tracker._id}<br/>
-                {this.state.tracker.location}<br/>
+            <div >
+                <img src={this.state.mapimg} alt='map location'></img>
             </div>
         )
     }
