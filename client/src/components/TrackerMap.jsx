@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
+import { Button, Divider } from 'semantic-ui-react';
+
 const axios = require('axios');
 
 
 export default class TrackerMap extends Component {
-    state={
-        tracker:{},
-        key:'',
-        mapimg:''
+    constructor(props){
+        super(props);
+        this.state={
+            tracker:{},
+            key:'',
+            mapimg:'',
+            trackerid:this.props.match.params.id
+        }
+        
     }
+    
     trackers=[{}];
     tracker={};
 
     getTrackerData=()=>{ 
-        axios.get(`/tracker/${this.props.match.params.id}`)
+         axios.get(`/tracker/${this.props.match.params.id}`)
         .then((response)=> {
          this.trackers=response.data;
          this.tracker=this.trackers[0];
@@ -28,15 +36,25 @@ export default class TrackerMap extends Component {
       };
       componentDidMount(){
           this.setState({key:localStorage.getItem('gmapsKey')});
-          this.getTrackerData();    
-         
+      }
+      autoRefresh=()=>{
+            this.getTrackerData();
       }
 
-    render() { 
+
+    render() {  
         return (
             <div >
+               
+                
                 <img src={this.state.mapimg} alt='map location'></img>
+                <Divider/>
+                <br/>
+                <Button basic color="green" icon='download' onClick={this.autoRefresh}></Button>
+                <br/>
+                
             </div>
+        
         )
     }
 }

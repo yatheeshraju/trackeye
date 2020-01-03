@@ -83,7 +83,7 @@ export default class MainNav extends Component {
                   <Route path="/create">
                       <CreateTracker/>
                   </Route>
-                <Route  exact  path="/map/:id" 
+                <Route path="/map/:id" 
                     render={({ match  }) => (
                      <TrackerMap match={match} />
                        )} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form,Button,Message} from 'semantic-ui-react';
+import {Form,Button,Message, Divider} from 'semantic-ui-react';
 export default class SetGmapsKey extends Component {
     state={
         success:false,
@@ -35,7 +35,10 @@ export default class SetGmapsKey extends Component {
                <Form.Input label='key' name='gmapsKey' value ={this.state.gmapsKey}onChange={this.handleChange} type='text'/>
                <Button positive type='button' fluid onClick={this.setKey} disabled={(!this.state.gmapsKey)}>Set Key</Button>
            </Form>
-
+           <br/>
+        <p>your google maps key stays in your browser local storage .</p>
+          <Divider/>
+           <a href='https://developers.google.com/maps/documentation/javascript/get-api-key'> Get your Google Maps Key</a>
         </div>
         )
     }

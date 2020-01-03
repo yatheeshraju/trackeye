@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form,Button,Message} from 'semantic-ui-react';
+import {Form,Button,Message, Divider} from 'semantic-ui-react';
 const axios = require('axios');
 export default class UpdateTracker extends Component {
     state={
@@ -53,9 +53,23 @@ export default class UpdateTracker extends Component {
                    <Form.Input label='name' name='name' value ={this.state.name}onChange={this.handleChange} type='text'/>
                    <Form.Input label='location' name='location' value ={this.state.location} onChange={this.handleChange} type='text'/>
                 
-                   <Button positive type='button' fluid onClick={this.updateTracker} disabled={(!this.state.name &&!this.state.location)}>Create</Button>
+                   <Button positive type='button' fluid onClick={this.updateTracker} disabled={(!this.state.name &&!this.state.location)}>Update</Button>
                </Form>
 
+               <Divider/>
+                update the location using below api
+                <br/>
+                <pre><code className="js">
+                    {`
+method: 'post',
+url: '/update',
+data: {
+name:'name of tracker',
+location:'lat:45345,lng:435345345'
+}
+                    `
+                    }                
+                </code></pre>
             </div>
         )
     }
