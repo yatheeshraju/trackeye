@@ -2,13 +2,13 @@
 
 Sample screenshots 
 
-![Alt text](../master/docs/trackeye1.png " "){:height="50%" width="50%"}
+<img src="../master/docs/trackeye1.png" width="300">
 
-![Alt text](../master/docs/trackeye2.png " "){:height="50%" width="50%"}
+<img src="../master/docs/trackeye2.png" width="300">
 
-![Alt text](../master/docs/trackeye3.png " "){:height="50%" width="50%"}
+<img src="../master/docs/trackeye3.png" width="300">
 
-![Alt text](../master/docs/trackeye4.png " "){:height="50%" width="50%"}
+<img src="../master/docs/trackeye4.png" width="300">
 
-![Alt text](../master/docs/trackeye5.png " "){:height="50%" width="50%"}
+<img src="../master/docs/trackeye5.png" width="300">
 
