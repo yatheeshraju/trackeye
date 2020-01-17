@@ -19,6 +19,8 @@ var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+// client build folder 
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 
 
@@ -74,5 +76,8 @@ app.post('/update',jsonParser, (req,res) => {
     })
  });
 
+ app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
 
 app.listen(port, () => console.log(`Server started listening on port ${port}!`))
