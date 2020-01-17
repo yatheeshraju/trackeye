@@ -6,7 +6,7 @@ const port = process.env.PORT || 5000 ;
 var tracker = require('./models/tracker');
 
 // mongodb connection 
-if (mongoose.connect('mongodb://localhost/trackerdev', {useUnifiedTopology: true,useNewUrlParser:true,useFindAndModify:true})){
+if (mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/trackerdev', {useUnifiedTopology: true,useNewUrlParser:true,useFindAndModify:true})){
     console.log('Connected to database on localhost !');
 }else{
     console.log('Error connecting to database on localhost !');
