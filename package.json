@@ -2,7 +2,10 @@
     "name": "trackeye-app",
     "version": "0.1.0",
     "scripts": {
-      "postinstall": "npm install --prefix server && npm install --prefix client",
-      "start": " npm run build --prefix client && npm start --prefix server"
+        "postinstall": "npm install --prefix server && npm install --prefix client",
+        "start": " concurrently \"npm start --prefix client\" \"npm start --prefix server\" "
+    },
+    "dependencies": {
+        "concurrently": "^5.0.2"
     }
 }
