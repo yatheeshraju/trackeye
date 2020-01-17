@@ -2,13 +2,13 @@
 
 Sample screenshots 
 
-![Alt text](../master/docs/trackeye1.png " ")
+<img src="../master/docs/trackeye1.png" width="300">
 
-![Alt text](../master/docs/trackeye2.png " ")
+<img src="../master/docs/trackeye2.png" width="300">
 
-![Alt text](../master/docs/trackeye3.png " ")
+<img src="../master/docs/trackeye3.png" width="300">
 
-![Alt text](../master/docs/trackeye4.png " ")
+<img src="../master/docs/trackeye4.png" width="300">
 
-![Alt text](../master/docs/trackeye5.png " ")
+<img src="../master/docs/trackeye5.png" width="300">
 
